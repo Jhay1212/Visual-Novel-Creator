@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Scene;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class SceneController extends Controller
 {
@@ -12,7 +13,8 @@ class SceneController extends Controller
      */
     public function index()
     {
-        //
+        $scenes = Scene::all();
+        return Inertia::render("scenes/Index", [""=> $scenes]);
     }
 
     /**
@@ -20,7 +22,7 @@ class SceneController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("scenes/Create");
     }
 
     /**
@@ -28,7 +30,9 @@ class SceneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Scene::create($data);
+        return redirect()->route("show.index")->with("success","Scene Created");
     }
 
     /**
@@ -36,7 +40,9 @@ class SceneController extends Controller
      */
     public function show(Scene $scene)
     {
-        //
+        return Inertia::render("", [
+            "scene" => $scene->id,
+        ]);
     }
 
     /**
@@ -44,7 +50,9 @@ class SceneController extends Controller
      */
     public function edit(Scene $scene)
     {
-        //
+        return Inertia::render("scenes/edit", [
+            "scene" => $scene->id,
+        ]);
     }
 
     /**

@@ -12,11 +12,11 @@ class Game extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
-    public function scene(){
+    public function scenes(){
         return $this->hasMany(Scene::class);
     }
 
-    public function character() {
-        return $this->belongsTo(Character::class);
+    public function characters() {
+        return $this->hasMany(Character::class);
     }
 }

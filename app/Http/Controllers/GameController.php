@@ -3,16 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use DB;
 use Illuminate\Http\Request;
-
+use Inertia\Inertia;
+use App\Models\Scene;
 class GameController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
+    
     {
-        //
+        $user = auth()->user();
+        $games = $user->games;
+        return Inertia::render("games/Index",
+        [
+            "games" => $games
+        ]
+    );
     }
 
     /**
@@ -20,7 +29,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("games/Create");
     }
 
     /**
@@ -28,15 +37,23 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            "name" => "required|string|min:3",
+            "genre" => "required"
+        ]);
+        Game::create($data);
+        return redirect("/")->with("success","");
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Game $game)
-    {
-        //
+    {   
+        $scenes = $game->scenes;
+        return Inertia::render("games/Show",[
+            "scenes" => $scenes
+        ]);
     }
 
     /**
@@ -44,7 +61,8 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+
+        return Inertia::render("games/Edit", $game);
     }
 
     /**
@@ -60,6 +78,6 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        // $game = Game::find
     }
 }
