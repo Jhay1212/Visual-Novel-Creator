@@ -26,7 +26,7 @@
         "@inertiajs/vue3": "^2.0.0",
         "@tailwindcss/vite": "^4.1.1",
         "@vitejs/plugin-vue": "^5.2.4",
-        "@vue-flow/core": "^1.45.0",
+        "@vue-flow/core": "^1.46.2",
         "@vueuse/core": "^12.8.2",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",

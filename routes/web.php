@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\GameController;
 
+Route::get("/games", [GameController::class, "index"])->name("game");
 Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
