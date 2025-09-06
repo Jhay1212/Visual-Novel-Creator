@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\GameController;
 
-Route::get("/games", [GameController::class, "index"])->name("game");
+Route::get("/games", [GameController::class, "index"])->name("games");
 Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
+Route::get("/game/{game}", [GameController::class,"show"])->name("show-game")
+->middleware('auth', "is_author");
 
 Route::get('dashboard', function () {
     return Inertia::render('Dashboard');

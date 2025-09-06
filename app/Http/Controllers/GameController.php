@@ -48,9 +48,10 @@ class GameController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Game $game)
-    {   
+    public function show(\App\Models\Game  $game)
+    {
         $scenes = $game->scenes;
+
         return Inertia::render("games/Show",[
             "scenes" => $scenes
         ]);

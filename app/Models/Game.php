@@ -9,13 +9,13 @@ use App\Models\Scene;
 use App\Models\Character;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 class Game extends Model
-{
+{   
     use HasUuids;
     public function user(){
         return $this->belongsTo(User::class);
     }
     public function scenes(){
-        return $this->hasMany(Scene::class);
+        return $this->hasMany(Scene::class, "games_id", "id");
     }
 
     public function characters() {

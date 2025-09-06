@@ -18,9 +18,9 @@ const edges = ref([
 
 <template class="bg-white/300">
   <VueFlow
-    class="bg-white text-blue-900 border h-screen"
+    class="bg-black text-blue-900 border h-screen"
     v-model:nodes="nodes"
     v-model:edges="edges"
-    :fit-view="true"
+    :fit-view=true
   />
 </template>

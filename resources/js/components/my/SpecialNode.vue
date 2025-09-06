@@ -5,7 +5,7 @@ import { Position } from '@vue-flow/core';
 const props = defineProps({
     position: {
         type: Object,
-        required: True
+        required: true
     }
 })
 
